@@ -39,4 +39,14 @@ por_dia = met_data %>%
 # glimpse(meteo_cg)
 
 por_dia %>% 
-    write_csv("dados/clima_cg_jp.csv")
+    write_csv(here::here("data/clima_cg_jp.csv"))
+
+por_dia %>% 
+    mutate(semana = lubridate::floor_date(dia, unit = "weeks")) %>% 
+    group_by(cidade, semana) %>% 
+    summarise(tmedia = mean(tmedia), 
+              tmax = max(tmax), 
+              tmin = min(tmin), 
+              chuva = sum(chuva)) %>% 
+    write_csv("data/clima_cg_jp-semanal.csv")
+

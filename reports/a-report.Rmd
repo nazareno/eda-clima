@@ -9,7 +9,7 @@ theme: sandstone
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(here)
-source(here("code/lib.R"))
+source(here::here("code/lib.R"))
 theme_set(theme_bw())
 
 knitr::opts_chunk$set(tidy = FALSE,
@@ -20,5 +20,8 @@ knitr::opts_chunk$set(tidy = FALSE,
 ```
 
 ```{r read}
-cg_vs_jp = read_projectdata()
+cg_vs_jp = read_projectdata() 
+
+glimpse(cg_vs_jp)
 ```
+
